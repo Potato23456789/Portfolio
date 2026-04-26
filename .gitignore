@@ -15,6 +15,9 @@ img/icon/
 CV_3D.html
 *.pdf
 
+# Allow Vietnamese CV
+!CV_3D_VN.html
+
 # Source design files
 *.indd
 *.rar

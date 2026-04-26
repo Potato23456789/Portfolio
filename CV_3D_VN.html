@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -98,7 +98,6 @@
 
     /* Pipeline */
     .pipeline { display: flex; flex-direction: column; gap: 7px; }
-
     .pipeline-step { display: flex; flex-direction: column; gap: 2px; }
 
     .pipeline-step .step-label {
@@ -221,11 +220,7 @@
       margin-bottom: 4px;
     }
 
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 3px;
-    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 3px; }
 
     .skill-pill {
       font-size: 8pt;
@@ -234,12 +229,6 @@
       border-radius: 10px;
       padding: 1px 7px;
       line-height: 1.7;
-    }
-
-    .skill-pill.tool {
-      color: var(--accent);
-      background: #faf6ef;
-      border: 1px solid #e8dfd0;
     }
 
     /* Experience */
@@ -252,12 +241,8 @@
     .exp-role { font-size: 8pt; color: var(--muted); font-style: italic; margin: 1px 0 2px; }
     .exp-desc { font-size: 8.5pt; line-height: 1.5; color: var(--text); }
 
-    /* GN capabilities strip */
-    .gn-strip {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
+    /* GN */
+    .gn-strip { display: flex; flex-direction: column; gap: 5px; }
 
     .gn-strip p {
       font-size: 8.5pt;
@@ -300,21 +285,21 @@
     </div>
 
     <div class="sidebar-section">
-      <h3>Contact</h3>
+      <h3>Liên lạc</h3>
       <ul class="contact-list">
         <li><span class="icon">📞</span><span>0373 220 574</span></li>
         <li><span class="icon">✉</span><a href="mailto:binhnguyenxuan96@gmail.com">binhnguyenxuan96@gmail.com</a></li>
-        <li><span class="icon">📍</span><span>Hà Nội, Vietnam</span></li>
-        <li><span class="icon">🔗</span><a href="#" class="placeholder">portfolio link coming soon</a></li>
+        <li><span class="icon">📍</span><span>Hà Nội, Việt Nam</span></li>
+        <li><span class="icon">🔗</span><a href="#" class="placeholder">portfolio đang cập nhật</a></li>
       </ul>
     </div>
 
     <div class="sidebar-section">
-      <h3>Tools &amp; Pipeline</h3>
+      <h3>Công cụ &amp; Quy trình</h3>
       <div class="pipeline">
 
         <div class="pipeline-step">
-          <span class="step-label">Modeling &amp; Rendering</span>
+          <span class="step-label">Dựng hình &amp; Render</span>
           <div class="step-tools">
             <span class="tool-tag primary">Blender</span>
             <span class="tool-tag primary">Cycles</span>
@@ -323,14 +308,14 @@
         </div>
 
         <div class="pipeline-step">
-          <span class="step-label">Generative Design</span>
+          <span class="step-label">Thiết kế tạo sinh</span>
           <div class="step-tools">
             <span class="tool-tag primary">Geometry Nodes</span>
           </div>
         </div>
 
         <div class="pipeline-step">
-          <span class="step-label">Texturing &amp; Materials</span>
+          <span class="step-label">Tạo chất liệu</span>
           <div class="step-tools">
             <span class="tool-tag primary">Substance 3D Painter</span>
             <span class="tool-tag">Shader Editor</span>
@@ -338,7 +323,7 @@
         </div>
 
         <div class="pipeline-step">
-          <span class="step-label">Concept &amp; Illustration</span>
+          <span class="step-label">Phác thảo &amp; Minh họa</span>
           <div class="step-tools">
             <span class="tool-tag primary">Krita</span>
             <span class="tool-tag">Photoshop</span>
@@ -346,7 +331,7 @@
         </div>
 
         <div class="pipeline-step">
-          <span class="step-label">Branding &amp; Print</span>
+          <span class="step-label">Branding &amp; Ấn phẩm</span>
           <div class="step-tools">
             <span class="tool-tag primary">Illustrator</span>
             <span class="tool-tag">InDesign</span>
@@ -359,50 +344,50 @@
     </div>
 
     <div class="sidebar-section">
-      <h3>Education</h3>
+      <h3>Học vấn</h3>
       <div class="edu-item">
         <div class="school">FPT Arena Multimedia</div>
-        <div class="program">Multimedia Design</div>
+        <div class="program">Thiết kế đa phương tiện</div>
         <div class="years">2022 – 2024 · Hà Nội</div>
       </div>
       <div class="edu-item">
         <div class="school">Technische Universität Darmstadt</div>
-        <div class="program">Electrical Engineering</div>
-        <div class="years">2016 – 2020 · Germany</div>
+        <div class="program">Kỹ thuật điện</div>
+        <div class="years">2016 – 2020 · Đức</div>
       </div>
     </div>
 
     <div class="sidebar-section">
-      <h3>Languages</h3>
+      <h3>Ngôn ngữ</h3>
       <div class="lang-item">
         <div>
-          <div class="lang-name">Vietnamese</div>
+          <div class="lang-name">Tiếng Việt</div>
           <div class="lang-dots">
             <div class="dot filled"></div><div class="dot filled"></div>
             <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
           </div>
         </div>
-        <div class="lang-level">Native</div>
+        <div class="lang-level">Bản ngữ</div>
       </div>
       <div class="lang-item">
         <div>
-          <div class="lang-name">English</div>
+          <div class="lang-name">Tiếng Anh</div>
           <div class="lang-dots">
             <div class="dot filled"></div><div class="dot filled"></div>
             <div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div>
           </div>
         </div>
-        <div class="lang-level">Professional</div>
+        <div class="lang-level">Chuyên nghiệp</div>
       </div>
       <div class="lang-item">
         <div>
-          <div class="lang-name">German</div>
+          <div class="lang-name">Tiếng Đức</div>
           <div class="lang-dots">
             <div class="dot filled"></div><div class="dot filled"></div>
             <div class="dot filled"></div><div class="dot"></div><div class="dot"></div>
           </div>
         </div>
-        <div class="lang-level">Intermediate</div>
+        <div class="lang-level">Trung cấp</div>
       </div>
     </div>
 
@@ -413,32 +398,32 @@
 
     <div class="name-block">
       <h1>Nguyễn Xuân Bình</h1>
-      <div class="role">3D Artist &amp; Visual Designer</div>
+      <div class="role">Họa sĩ 3D &amp; Nhà thiết kế</div>
     </div>
 
     <div class="section summary">
-      <h2>Summary</h2>
+      <h2>Giới thiệu</h2>
       <p>
-        Freelance 3D artist with the ability to own the full pipeline — from brief to final
-        deliverable. Has hands-on experience across product visualization, restaurant interiors,
-        character design, and 3D rendering. Knowledgeable in Geometry Nodes for generative
-        design workflows. Currently looking for a full-time position at a studio or creative
-        company to grow within a team environment.
+        Họa sĩ 3D freelance với khả năng đảm nhận toàn bộ quy trình — từ brief đến file
+        bàn giao cuối. Đã có kinh nghiệm thực tế với các dự án trực quan hóa sản phẩm, nội
+        thất nhà hàng, thiết kế nhân vật và render các sản phẩm 3D. Có hiểu biết về công cụ nâng cao
+        Geometry Nodes cho các thiết kế tạo sinh. Đang tìm kiếm vị trí full-time tại studio
+        hoặc công ty sáng tạo để phát triển trong môi trường đội nhóm.
       </p>
     </div>
 
     <div class="section">
-      <h2>Projects</h2>
+      <h2>Dự án</h2>
 
       <div class="project">
         <div class="project-header">
           <span class="project-name">Fitzroy +i Size</span>
-          <span class="project-type">Commercial · Client Work · 2 weeks</span>
+          <span class="project-type">Thương mại · 2 tuần</span>
         </div>
-        <div class="project-subtitle">Product 3D Visualization</div>
-        <div class="project-process">Reconstructed the product in 3D from 2D reference images, through full modeling, texturing, and lighting, delivering a complete render set across 3 color variants.</div>
+        <div class="project-subtitle">Trực quan hóa sản phẩm 3D</div>
+        <div class="project-process">Tái tạo sản phẩm trong không gian 3D từ ảnh tham chiếu 2D, qua toàn bộ quy trình dựng hình, tạo chất liệu và ánh sáng, bàn giao bộ render hoàn chỉnh bao gồm 3 màu sắc.</div>
         <div class="project-tags">
-          <span class="skill-pill">Multi-variant rendering (3 colors × 11 angles)</span>
+          <span class="skill-pill">Render đa biến thể (3 màu × 11 góc)</span>
           <span class="skill-pill">Model</span>
           <span class="skill-pill">Texture</span>
           <span class="skill-pill">Render</span>
@@ -448,12 +433,12 @@
       <div class="project">
         <div class="project-header">
           <span class="project-name">Damai Ramen</span>
-          <span class="project-type">Freelance · 1 month</span>
+          <span class="project-type">Freelance · 1 tháng</span>
         </div>
-        <div class="project-subtitle">Architectural 3D Visualization</div>
-        <div class="project-process">Developed the full 3D product from client references, carried through modeling, texturing, and lighting, and delivered a complete visual package through quality renders.</div>
+        <div class="project-subtitle">Trực quan hóa kiến trúc 3D</div>
+        <div class="project-process">Xây dựng không gian nhà hàng trong 3D từ bản vẽ mặt bằng của khách hàng, thực hiện toàn bộ công đoạn model, tạo chất liệu, ánh sáng và bàn giao bộ ảnh render chất lượng cao.</div>
         <div class="project-tags">
-          <span class="skill-pill">Architectural interior rendering</span>
+          <span class="skill-pill">Kiến trúc nội thất</span>
           <span class="skill-pill">Model</span>
           <span class="skill-pill">Texture</span>
           <span class="skill-pill">Lighting</span>
@@ -464,12 +449,12 @@
       <div class="project">
         <div class="project-header">
           <span class="project-name">Fried90s</span>
-          <span class="project-type">Freelance · 1 month</span>
+          <span class="project-type">Freelance · 1 tháng</span>
         </div>
-        <div class="project-subtitle">Architectural 3D Visualization</div>
-        <div class="project-process">Developed the full 3D product from client references, carried through modeling, texturing, and lighting, and delivered a complete visual package through quality renders.</div>
+        <div class="project-subtitle">Trực quan hóa kiến trúc 3D</div>
+        <div class="project-process">Xây dựng không gian nhà hàng trong 3D từ bản vẽ mặt bằng của khách hàng, thực hiện toàn bộ công đoạn model, tạo chất liệu, ánh sáng và bàn giao bộ ảnh render chất lượng cao.</div>
         <div class="project-tags">
-          <span class="skill-pill">Architectural interior rendering</span>
+          <span class="skill-pill">Kiến trúc nội thất</span>
           <span class="skill-pill">Model</span>
           <span class="skill-pill">Texture</span>
           <span class="skill-pill">Lighting</span>
@@ -480,16 +465,16 @@
       <div class="project">
         <div class="project-header">
           <span class="project-name">Link Online Learners — Mascot</span>
-          <span class="project-type">Commercial · 1 week</span>
+          <span class="project-type">Thương mại · 1 tuần</span>
         </div>
-        <div class="project-subtitle">3D Character Design, Rigging &amp; Animation</div>
-        <div class="project-process">Designed an original character from a visual identity brief, then modeled, textured, rigged, and posed it across 5 animation states for use across brand materials.</div>
+        <div class="project-subtitle">Thiết kế nhân vật 3D, Rigging &amp; Animation</div>
+        <div class="project-process">Thiết kế nhân vật gốc từ brief nhận diện thương hiệu, sau đó dựng hình, tạo chất liệu, rigging và tạo các dáng khác nhau phục vụ các ấn phẩm truyền thông.</div>
         <div class="project-tags">
-          <span class="skill-pill">Character design</span>
-          <span class="skill-pill">Modeling &amp; rigging</span>
-          <span class="skill-pill">Posing</span>
-          <span class="skill-pill">Texture</span>
-          <span class="skill-pill">Special effects</span>
+          <span class="skill-pill">Thiết kế nhân vật</span>
+          <span class="skill-pill">Dựng hình &amp; rigging nhân vật</span>
+          <span class="skill-pill">Tạo dáng</span>
+          <span class="skill-pill">Chất liệu</span>
+          <span class="skill-pill">Hiệu ứng</span>
           <span class="skill-pill">Render</span>
         </div>
       </div>
@@ -498,36 +483,36 @@
 
     <!-- Geometry Nodes -->
     <div class="section">
-      <h2>Geometry Nodes — Generative Design</h2>
+      <h2>Geometry Nodes — Thiết kế tạo sinh</h2>
       <div class="gn-strip">
-        <p>Self-directed study in Blender's generative design system, applied across simulation, rapid design generation, and architectural support.</p>
+        <p>Tự nghiên cứu chuyên sâu hệ thống thiết kế tạo sinh của Blender, ứng dụng vào mô phỏng, tạo ra các mẫu thiết kế nhanh chóng và hỗ trợ làm kiến trúc.</p>
         <div class="gn-tags">
-          <span class="gn-tag">Generative foliage &amp; nature</span>
-          <span class="gn-tag">Particle simulation</span>
-          <span class="gn-tag">Physics simulation</span>
+          <span class="gn-tag">Tạo sinh thực vật &amp; thiên nhiên</span>
+          <span class="gn-tag">Mô phỏng hạt</span>
+          <span class="gn-tag">Mô phỏng vật lý</span>
         </div>
       </div>
     </div>
 
     <div class="section">
-      <h2>Experience</h2>
+      <h2>Kinh nghiệm</h2>
 
       <div class="exp-item">
         <div class="exp-header">
           <span class="company">Thule Authorized Distributor</span>
           <span class="dates">08/2023 – 02/2025</span>
         </div>
-        <div class="exp-role">Social Media Planner &amp; Designer</div>
-        <div class="exp-desc">Planned and managed the brand's social media content calendar. Designed promotional visuals, banners, and campaign materials. Maintained brand consistency across posts and managed the company website.</div>
+        <div class="exp-role">Lập kế hoạch &amp; Thiết kế mạng xã hội</div>
+        <div class="exp-desc">Lên kế hoạch và quản lý lịch nội dung mạng xã hội cho thương hiệu. Thiết kế ảnh quảng cáo, banner và tài liệu chiến dịch. Duy trì nhất quán thương hiệu và quản lý website công ty.</div>
       </div>
 
       <div class="exp-item">
         <div class="exp-header">
           <span class="company">Tour Đêm Ngọc Sơn</span>
-          <span class="dates">02/2024 – present</span>
+          <span class="dates">02/2024 – hiện tại</span>
         </div>
-        <div class="exp-role">Freelance 2D Artist &amp; Social Media Designer</div>
-        <div class="exp-desc">Designed original 2D characters and illustrated assets for brand storytelling. Planned and produced social media content, including promotional graphics and visual campaigns targeting the tour's audience.</div>
+        <div class="exp-role">Họa sĩ 2D &amp; Thiết kế mạng xã hội freelance</div>
+        <div class="exp-desc">Thiết kế nhân vật 2D gốc và minh họa phục vụ kể chuyện thương hiệu. Lập kế hoạch và sản xuất nội dung mạng xã hội, bao gồm đồ họa quảng cáo và chiến dịch hình ảnh.</div>
       </div>
 
     </div>
