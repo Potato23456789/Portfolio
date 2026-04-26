@@ -1,9 +1,25 @@
-# Ignore everything by default
-*
+# Claude AI files — skills, memory, settings
+.claude/
 
-# Unignore only what we want to publish
-!index.html
-!.nojekyll
-!.gitignore
-!img/
-!img/Profile picture.png
+# Raw Blender source files
+Animation PRJ/
+
+# Raw project assets not needed on the web
+img/DamaiRamen/
+img/Fried90s/
+img/Fitzroy +i Size/
+img/LinkOnlineLearners Mascot/
+img/icon/
+
+# Source CV files (PDF and duplicate HTML)
+CV_3D.html
+*.pdf
+
+# Source design files
+*.indd
+*.rar
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
