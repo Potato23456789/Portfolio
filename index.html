@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Nguyễn Xuân Bình</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #c8a96e;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --rule: #e0e0e0;
+      --sidebar-bg: #f7f5f2;
+      --page-w: 210mm;
+      --page-h: 297mm;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 9.5pt;
+      color: var(--text);
+      background: #d0ccc7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 32px 16px;
+      gap: 20px;
+    }
+
+    .page {
+      width: var(--page-w);
+      height: var(--page-h);
+      background: #fff;
+      display: grid;
+      grid-template-columns: 62mm 1fr;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+      overflow: hidden;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      background: var(--sidebar-bg);
+      padding: 32px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      border-right: 1px solid var(--rule);
+    }
+
+    .profile-photo {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+    }
+
+    .profile-photo-placeholder {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: var(--rule);
+      border: 3px solid var(--accent);
+    }
+
+    .sidebar-section h3 {
+      font-size: 6.5pt;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 9px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 8pt;
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .contact-list li .icon { flex-shrink: 0; font-size: 9pt; }
+    .contact-list a { color: var(--text); text-decoration: none; }
+
+    /* Pipeline */
+    .pipeline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pipeline-step {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .pipeline-step .step-label {
+      font-size: 6.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .pipeline-step .step-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+
+    .tool-tag {
+      font-size: 7.5pt;
+      color: var(--text);
+      background: #ede9e3;
+      border-radius: 3px;
+      padding: 2px 6px;
+      line-height: 1.6;
+    }
+
+    .tool-tag.primary {
+      background: #e8dfd0;
+      font-weight: 500;
+    }
+
+    /* Education */
+    .edu-item { margin-bottom: 10px; }
+    .edu-item:last-child { margin-bottom: 0; }
+
+    .edu-item .school { font-weight: 600; font-size: 8pt; line-height: 1.4; }
+    .edu-item .program { font-size: 7.5pt; color: var(--muted); font-style: italic; margin-top: 1px; }
+    .edu-item .years { font-size: 7pt; color: var(--accent); font-weight: 500; margin-top: 2px; }
+
+    /* Languages */
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      font-size: 8pt;
+    }
+
+    .lang-item:last-child { margin-bottom: 0; }
+
+    .lang-name { font-weight: 500; }
+
+    .lang-level {
+      font-size: 7pt;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .lang-dots {
+      display: flex;
+      gap: 3px;
+      margin-top: 2px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--rule);
+    }
+
+    .dot.filled { background: var(--accent); }
+
+    /* ── Main ── */
+    .main {
+      padding: 32px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 17px;
+    }
+
+    .name-block {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 11px;
+    }
+
+    .name-block h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 23pt;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .name-block .role {
+      font-size: 8.5pt;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .section h2 {
+      font-size: 6.5pt;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 9px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .summary p {
+      font-size: 8.5pt;
+      color: var(--text);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* Projects */
+    .project {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .project:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+      gap: 8px;
+    }
+
+    .project-name { font-weight: 600; font-size: 9pt; }
+
+    .project-type {
+      font-size: 7pt;
+      color: var(--accent);
+      font-weight: 500;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .project-subtitle {
+      font-size: 7.5pt;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 4px;
+    }
+
+    .project-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      margin-bottom: 4px;
+    }
+
+    .project-tool {
+      font-size: 7pt;
+      color: var(--accent);
+      background: #faf6ef;
+      border: 1px solid #e8dfd0;
+      border-radius: 3px;
+      padding: 1px 5px;
+      line-height: 1.6;
+    }
+
+    .project ul {
+      padding-left: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .project ul li { font-size: 8pt; line-height: 1.55; color: var(--text); }
+    .note { color: var(--muted); font-style: italic; }
+
+    /* Experience */
+    .exp-item { margin-bottom: 8px; }
+    .exp-item:last-child { margin-bottom: 0; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .exp-header .company { font-weight: 600; font-size: 8.5pt; }
+    .exp-header .dates { font-size: 7pt; color: var(--accent); font-weight: 500; white-space: nowrap; }
+
+    .exp-role { font-size: 7.5pt; color: var(--muted); font-style: italic; margin: 1px 0 2px; }
+    .exp-desc { font-size: 8pt; line-height: 1.55; color: var(--text); }
+
+    /* ── Page 2 specific ── */
+
+    /* GN skills grid */
+    .gn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 16px;
+    }
+
+    .gn-group h4 {
+      font-size: 6.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 4px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .gn-group ul {
+      padding-left: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .gn-group ul li { font-size: 8pt; line-height: 1.5; color: var(--text); }
+    .gn-group ul li .gn-note { font-size: 7pt; color: var(--muted); font-style: italic; }
+
+    /* Personal experiments */
+    .experiment {
+      margin-bottom: 9px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .experiment:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .exp2-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .exp2-name { font-weight: 600; font-size: 8.5pt; }
+    .exp2-tag {
+      font-size: 7pt;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .exp2-desc { font-size: 8pt; line-height: 1.6; color: var(--text); font-weight: 300; }
+
+    /* Sidebar p2 — what I offer */
+    .offer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .offer-list li {
+      font-size: 8pt;
+      line-height: 1.5;
+      color: var(--text);
+      padding-left: 10px;
+      position: relative;
+    }
+
+    .offer-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 7pt;
+    }
+
+    .placeholder { color: #bbb; font-style: italic; }
+
+    /* ── Print ── */
+    @media print {
+      body { background: none; padding: 0; gap: 0; }
+      .page { box-shadow: none; width: 100%; page-break-after: always; }
+      .page:last-child { page-break-after: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ PAGE 1 ═══════════════════════════════ -->
+<div class="page">
+
+  <aside class="sidebar">
+
+    <!-- Photo -->
+    <div>
+      <img class="profile-photo" src="img/Profile picture.png" alt="Nguyễn Xuân Bình"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+      <div class="profile-photo-placeholder" style="display:none"></div>
+    </div>
+
+    <!-- Contact -->
+    <div class="sidebar-section">
+      <h3>Contact</h3>
+      <ul class="contact-list">
+        <li><span class="icon">📞</span><span>0373 220 574</span></li>
+        <li><span class="icon">✉</span><a href="mailto:bnghty96@gmail.com">bnghty96@gmail.com</a></li>
+        <li><span class="icon">📍</span><span>Hà Nội, Vietnam</span></li>
+        <li><span class="icon">🔗</span><a href="#" class="placeholder">portfolio link coming soon</a></li>
+      </ul>
+    </div>
+
+    <!-- Tools & Pipeline -->
+    <div class="sidebar-section">
+      <h3>Tools &amp; Pipeline</h3>
+      <div class="pipeline">
+
+        <div class="pipeline-step">
+          <span class="step-label">Modeling &amp; Rendering</span>
+          <div class="step-tools">
+            <span class="tool-tag primary">Blender</span>
+            <span class="tool-tag primary">Cycles</span>
+            <span class="tool-tag">EEVEE</span>
+            <span class="tool-tag">Geometry Nodes</span>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <span class="step-label">Texturing &amp; Materials</span>
+          <div class="step-tools">
+            <span class="tool-tag primary">Substance 3D Painter</span>
+            <span class="tool-tag">Shader Editor</span>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <span class="step-label">Concept &amp; Illustration</span>
+          <div class="step-tools">
+            <span class="tool-tag primary">Krita</span>
+            <span class="tool-tag">Photoshop</span>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <span class="step-label">Brand &amp; Print Design</span>
+          <div class="step-tools">
+            <span class="tool-tag primary">Illustrator</span>
+            <span class="tool-tag">InDesign</span>
+            <span class="tool-tag">Photoshop</span>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <span class="step-label">Delivery Formats</span>
+          <div class="step-tools">
+            <span class="tool-tag">glTF / GLB</span>
+            <span class="tool-tag">PNG</span>
+            <span class="tool-tag">PDF print-ready</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="sidebar-section">
+      <h3>Education</h3>
+      <div class="edu-item">
+        <div class="school">FPT Arena</div>
+        <div class="program">Multimedia</div>
+        <div class="years">2022 – 2024 · Hà Nội</div>
+      </div>
+      <div class="edu-item">
+        <div class="school">Technische Universität Darmstadt</div>
+        <div class="program">Electrical Engineering</div>
+        <div class="years">2016 – 2020 · Germany</div>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="sidebar-section">
+      <h3>Languages</h3>
+      <div class="lang-item">
+        <div>
+          <div class="lang-name">Vietnamese</div>
+          <div class="lang-dots">
+            <div class="dot filled"></div><div class="dot filled"></div>
+            <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+          </div>
+        </div>
+        <div class="lang-level">Native</div>
+      </div>
+      <div class="lang-item">
+        <div>
+          <div class="lang-name">English</div>
+          <div class="lang-dots">
+            <div class="dot filled"></div><div class="dot filled"></div>
+            <div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div>
+          </div>
+        </div>
+        <div class="lang-level">Professional</div>
+      </div>
+      <div class="lang-item">
+        <div>
+          <div class="lang-name">German</div>
+          <div class="lang-dots">
+            <div class="dot filled"></div><div class="dot filled"></div>
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+        </div>
+        <div class="lang-level">Basic</div>
+      </div>
+    </div>
+
+  </aside>
+
+  <main class="main">
+
+    <div class="name-block">
+      <h1>Nguyễn Xuân Bình</h1>
+      <div class="role">3D Artist &amp; Visual Designer</div>
+    </div>
+
+    <div class="section summary">
+      <h2>Summary</h2>
+      <p>
+        3D artist and visual designer with commercial experience across product visualization,
+        architectural rendering, character design, and brand identity. I work across the full
+        creative pipeline — concept sketching in Krita, procedural modeling and simulation with
+        Blender's Geometry Nodes, photorealistic rendering in Cycles, texturing in Substance 3D
+        Painter, and final delivery in both print and real-time 3D formats. I'm comfortable
+        switching tools mid-project and adapting to what each client deliverable needs.
+        Available for freelance 3D visualization and branding projects.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Client Projects</h2>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Fitzroy +i Size</span>
+          <span class="project-type">Commercial · Client Work</span>
+        </div>
+        <div class="project-subtitle">Product 3D Visualization — Baby Car Seat</div>
+        <div class="project-tools">
+          <span class="project-tool">Blender</span>
+          <span class="project-tool">Substance 3D Painter</span>
+          <span class="project-tool">Cycles</span>
+        </div>
+        <ul>
+          <li>Produced a complete commercial render set: 3 color variants (Beige, Black, Grey) × 11 camera angles = 33 final images</li>
+          <li>Modeled precise product geometry including fabric upholstery, safety harness hardware, and labeling details</li>
+          <li>Textured fabric and hard-surface materials in Substance 3D Painter for photorealistic accuracy</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Damai Ramen</span>
+          <span class="project-type">Freelance</span>
+        </div>
+        <div class="project-subtitle">Brand Identity &amp; Architectural 3D Visualization</div>
+        <div class="project-tools">
+          <span class="project-tool">Blender</span>
+          <span class="project-tool">Illustrator</span>
+          <span class="project-tool">Photoshop</span>
+          <span class="project-tool">InDesign</span>
+        </div>
+        <ul>
+          <li>Designed full brand identity: logo suite (black, white, full-color variants) and brand color system</li>
+          <li>Produced 3D architectural renders of the restaurant interior — multiple camera angles, orthographic floor plans, and a 3D location map</li>
+          <li>Art directed onsite photography session to align with the 3D visual language</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Fried90s</span>
+          <span class="project-type">Freelance</span>
+        </div>
+        <div class="project-subtitle">Product 3D Visualization &amp; Branding</div>
+        <div class="project-tools">
+          <span class="project-tool">Blender</span>
+          <span class="project-tool">Cycles</span>
+          <span class="project-tool">Illustrator</span>
+        </div>
+        <ul>
+          <li>Delivered 7 high-fidelity product renders from multiple camera perspectives</li>
+          <li>Rendered in Blender Cycles at up to 2048 samples <span class="note">(up to 5 hours per frame)</span> for studio-quality output</li>
+          <li>Designed accompanying brand logo in Illustrator</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Link Online Learners — Mascot</span>
+          <span class="project-type">Client Work</span>
+        </div>
+        <div class="project-subtitle">3D Character Design, Rigging &amp; Animation</div>
+        <div class="project-tools">
+          <span class="project-tool">Blender</span>
+          <span class="project-tool">Krita</span>
+          <span class="project-tool">Shader Editor</span>
+        </div>
+        <ul>
+          <li>Designed, modeled, and rigged an original robot mascot character for an online learning platform</li>
+          <li>Created and saved 5 named animation actions: Welcoming, Presenting, Thumb Up, Warning, Wondering — ready for deployment across brand materials</li>
+          <li>Built stylized emission and glow shader materials for the screen-face and hover-light effects</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="section">
+      <h2>Experience</h2>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="company">Thule Authorized Distributor</span>
+          <span class="dates">08/2024 – 02/2025</span>
+        </div>
+        <div class="exp-role">Social Media Designer &amp; Web Manager</div>
+        <div class="exp-desc">Designed promotional materials and managed brand content across social channels using Photoshop and Illustrator.</div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="company">Binh Minh Restaurant</span>
+          <span class="dates">02/2020 – present</span>
+        </div>
+        <div class="exp-role">Waiter</div>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 2 ═══════════════════════════════ -->
+<div class="page">
+
+  <aside class="sidebar">
+
+    <!-- Page 2 header repeat -->
+    <div style="padding-top: 4px;">
+      <div style="font-family:'DM Serif Display',serif; font-size:13pt; font-weight:400; color:var(--text); line-height:1.2;">Nguyễn Xuân Bình</div>
+      <div style="font-size:7pt; color:var(--muted); letter-spacing:0.15em; text-transform:uppercase; margin-top:3px;">3D Artist &amp; Visual Designer</div>
+    </div>
+
+    <!-- What I offer -->
+    <div class="sidebar-section">
+      <h3>What I Deliver</h3>
+      <ul class="offer-list">
+        <li>Product visualization (e-commerce, commercial, multi-variant)</li>
+        <li>Architectural &amp; interior renders</li>
+        <li>Character design, rigging &amp; animation</li>
+        <li>Procedural assets via Geometry Nodes</li>
+        <li>Brand identity &amp; logo design</li>
+        <li>Print-ready layouts (menus, brochures, signage)</li>
+        <li>Real-time 3D export (glTF / GLB for web)</li>
+      </ul>
+    </div>
+
+    <!-- Currently exploring -->
+    <div class="sidebar-section">
+      <h3>Currently Exploring</h3>
+      <div class="pipeline">
+        <div class="pipeline-step">
+          <div class="step-tools">
+            <span class="tool-tag">Real-time 3D for web</span>
+            <span class="tool-tag">Particle simulation</span>
+            <span class="tool-tag">Procedural animation</span>
+            <span class="tool-tag">Mathematical visualization</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Availability -->
+    <div class="sidebar-section">
+      <h3>Availability</h3>
+      <p style="font-size:8pt; line-height:1.6; color:var(--text);">
+        Open to freelance projects and client collaborations.<br/>
+        Based in Hà Nội — available remotely.
+      </p>
+    </div>
+
+  </aside>
+
+  <main class="main">
+
+    <!-- Geometry Nodes -->
+    <div class="section">
+      <h2>Geometry Nodes — Technical Proficiency</h2>
+      <p style="font-size:8pt; line-height:1.65; color:var(--text); font-weight:300; margin-bottom:10px;">
+        Beyond hand-modeling, I use Blender's Geometry Nodes for procedural, non-destructive workflows.
+        The studies below represent a self-directed curriculum covering simulation, procedural generation,
+        curve-based tools, and advanced shader integration.
+      </p>
+
+      <div class="gn-grid">
+
+        <div class="gn-group">
+          <h4>Procedural Generation</h4>
+          <ul>
+            <li>Plant Generator <span class="gn-note">— parametric foliage with growth controls</span></li>
+            <li>Tree Branch <span class="gn-note">— recursive branching system</span></li>
+            <li>Flower <span class="gn-note">— petal instancing on curves</span></li>
+            <li>Christmas Tree Ornament <span class="gn-note">— parametric decoration</span></li>
+          </ul>
+        </div>
+
+        <div class="gn-group">
+          <h4>Simulation &amp; Dynamics</h4>
+          <ul>
+            <li>Particle Simulation with Lifetime <span class="gn-note">— birth/death cycle &amp; forces</span></li>
+            <li>Particle Trail <span class="gn-note">— motion trail effects</span></li>
+            <li>Ocean Wave <span class="gn-note">— displacement-based wave animation</span></li>
+            <li>IcoSphere Organism <span class="gn-note">— organic growth animation</span></li>
+          </ul>
+        </div>
+
+        <div class="gn-group">
+          <h4>Architectural &amp; Product Tools</h4>
+          <ul>
+            <li>HandRail <span class="gn-note">— parametric railing generator</span></li>
+            <li>Wall Pieces <span class="gn-note">— modular wall assembly system</span></li>
+            <li>Curve Table / Quick Dining Table <span class="gn-note">— procedural furniture</span></li>
+            <li>Random Scale Array <span class="gn-note">— scattering &amp; instancing tool</span></li>
+          </ul>
+        </div>
+
+        <div class="gn-group">
+          <h4>Animation Techniques</h4>
+          <ul>
+            <li>Morph Between Mesh <span class="gn-note">— shape-key-free mesh transitions</span></li>
+            <li>Move Instance on Curve <span class="gn-note">— path-based instancing</span></li>
+            <li>Object Follow Curve <span class="gn-note">— curve-driven animation</span></li>
+            <li>Parallax Effect <span class="gn-note">— depth-based scroll animation</span></li>
+          </ul>
+        </div>
+
+        <div class="gn-group">
+          <h4>Technical &amp; Advanced</h4>
+          <ul>
+            <li>GeoNode to Shader <span class="gn-note">— bridging GN data into material trees</span></li>
+            <li>Position to Control Texture <span class="gn-note">— UV-free world-space mapping</span></li>
+            <li>Transfer GN Data Between Objects <span class="gn-note">— cross-object attribute pipeline</span></li>
+            <li>Loop Texture <span class="gn-note">— seamless animated texture looping</span></li>
+          </ul>
+        </div>
+
+        <div class="gn-group">
+          <h4>2D &amp; Motion Graphics</h4>
+          <ul>
+            <li>2D Elements <span class="gn-note">— flat design elements in 3D space</span></li>
+            <li>Scale Curve on One Axis <span class="gn-note">— curve animation control</span></li>
+            <li>Curve Index Loop <span class="gn-note">— looping curve deformation</span></li>
+            <li>Align to Normal &amp; Tangent <span class="gn-note">— surface-accurate instancing</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Personal & Experimental Projects -->
+    <div class="section">
+      <h2>Personal &amp; Experimental Projects</h2>
+
+      <div class="experiment">
+        <div class="exp2-header">
+          <span class="exp2-name">Lorenz Attractor — Mathematical Visualization</span>
+          <span class="exp2-tag">Personal · Blender + Python</span>
+        </div>
+        <p class="exp2-desc">
+          Procedural visualization of the Lorenz strange attractor using a custom Python script
+          to generate chaotic curve geometry inside Blender. Explores the intersection of
+          mathematics, motion, and 3D art.
+        </p>
+      </div>
+
+      <div class="experiment">
+        <div class="exp2-header">
+          <span class="exp2-name">Tentacle &amp; Organic Motion System</span>
+          <span class="exp2-tag">Personal · Geometry Nodes</span>
+        </div>
+        <p class="exp2-desc">
+          Procedural tentacle rig built entirely in Geometry Nodes — no armature required.
+          Demonstrates non-destructive soft-body-style animation for organic character motion.
+        </p>
+      </div>
+
+      <div class="experiment">
+        <div class="exp2-header">
+          <span class="exp2-name">Key Generator</span>
+          <span class="exp2-tag">Personal · Geometry Nodes</span>
+        </div>
+        <p class="exp2-desc">
+          Parametric key modeling tool: adjust tooth pattern, shaft length, and head shape
+          via node inputs. Built as a reusable asset for architectural visualization scenes.
+        </p>
+      </div>
+
+      <div class="experiment">
+        <div class="exp2-header">
+          <span class="exp2-name">Bushman — Stylized Character</span>
+          <span class="exp2-tag">Personal · Blender</span>
+        </div>
+        <p class="exp2-desc">
+          Original stylized character study exploring non-photorealistic shading and
+          expressive silhouette design in Blender.
+        </p>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

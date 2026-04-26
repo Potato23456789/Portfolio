@@ -1,0 +1,9 @@
+# Ignore everything by default
+*
+
+# Unignore only what we want to publish
+!index.html
+!.nojekyll
+!.gitignore
+!img/
+!img/Profile picture.png
