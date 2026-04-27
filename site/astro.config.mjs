@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import fs from 'fs';
 
 // Vite cache moved outside OneDrive to prevent EPERM rename errors on Windows
 export default defineConfig({
@@ -9,4 +10,14 @@ export default defineConfig({
   vite: {
     cacheDir: 'C:/Users/binhn/.vite-cache/portfolio',
   },
+  integrations: [
+    {
+      name: 'nojekyll',
+      hooks: {
+        'astro:build:done': ({ dir }) => {
+          fs.writeFileSync(new URL('.nojekyll', dir), '');
+        },
+      },
+    },
+  ],
 });
