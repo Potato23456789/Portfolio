@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CV — Nguyễn Xuân Bình</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@300;400;500;600;700&subset=vietnamese&display=swap" rel="stylesheet" />
+  <style>
+  </style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -20,7 +22,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      font-size: 9pt;
+      font-size: 13.5px;
       color: var(--text);
       background: #d0ccc7;
       display: flex;
@@ -112,14 +114,13 @@
 
     .tool-tag {
       font-size: 8pt;
+      font-weight: 500;
       color: var(--text);
-      background: #ede9e3;
+      background: #e8dfd0;
       border-radius: 3px;
       padding: 1px 5px;
       line-height: 1.6;
     }
-
-    .tool-tag.primary { background: #e8dfd0; font-weight: 500; }
 
     /* Education */
     .edu-item { margin-bottom: 8px; }
@@ -149,8 +150,8 @@
     .name-block { border-bottom: 2px solid var(--accent); padding-bottom: 9px; }
 
     .name-block h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22pt;
+      font-family: 'Lora', serif;
+      font-size: 28pt;
       font-weight: 400;
       letter-spacing: 0.03em;
       color: var(--text);
@@ -226,8 +227,8 @@
     .skill-pill {
       font-size: 8pt;
       color: var(--text);
-      background: #f0ebe3;
-      border-radius: 10px;
+      background: #ede9e3;
+      border-radius: 3px;
       padding: 1px 7px;
       line-height: 1.7;
     }
@@ -280,7 +281,7 @@
   <aside class="sidebar">
 
     <div>
-      <img class="profile-photo" src="img/Profile picture.png" alt="Nguyễn Xuân Bình"
+      <img class="profile-photo" src="../img/Profile picture.png" alt="Nguyễn Xuân Bình"
            onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
       <div class="profile-photo-placeholder" style="display:none"></div>
     </div>
@@ -362,16 +363,6 @@
       <h3>Ngôn ngữ</h3>
       <div class="lang-item">
         <div>
-          <div class="lang-name">Tiếng Việt</div>
-          <div class="lang-dots">
-            <div class="dot filled"></div><div class="dot filled"></div>
-            <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
-          </div>
-        </div>
-        <div class="lang-level">Bản ngữ</div>
-      </div>
-      <div class="lang-item">
-        <div>
           <div class="lang-name">Tiếng Anh</div>
           <div class="lang-dots">
             <div class="dot filled"></div><div class="dot filled"></div>
@@ -399,7 +390,7 @@
 
     <div class="name-block">
       <h1>Nguyễn Xuân Bình</h1>
-      <div class="role">Họa sĩ 3D &amp; Nhà thiết kế</div>
+      <div class="role">3D Artist</div>
     </div>
 
     <div class="section summary">
@@ -407,9 +398,8 @@
       <p>
         Họa sĩ 3D freelance với khả năng đảm nhận toàn bộ quy trình — từ brief đến file
         bàn giao cuối. Đã có kinh nghiệm thực tế với các dự án trực quan hóa sản phẩm, nội
-        thất nhà hàng, thiết kế nhân vật và render các sản phẩm 3D. Có hiểu biết về công cụ nâng cao
-        Geometry Nodes cho các thiết kế tạo sinh. Đang tìm kiếm vị trí full-time tại studio
-        hoặc công ty sáng tạo để phát triển trong môi trường đội nhóm.
+        thất nhà hàng, thiết kế nhân vật và render các sản phẩm 3D. Tôi đang tìm kiếm vị trí full-time tại một studio
+        hoặc công ty sáng tạo với môi trường năng động và phù hợp để phát triển kĩ năng cá nhân và chuyên môn nghề nghiệp.
       </p>
     </div>
 
@@ -465,7 +455,7 @@
 
       <div class="project">
         <div class="project-header">
-          <span class="project-name">Link Online Learners — Mascot</span>
+          <span class="project-name">Link Online Learners - Mascot</span>
           <span class="project-type">Thương mại · 1 tuần</span>
         </div>
         <div class="project-subtitle">Thiết kế nhân vật 3D, Rigging &amp; Animation</div>
