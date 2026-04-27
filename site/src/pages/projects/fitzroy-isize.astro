@@ -1,0 +1,293 @@
+---
+import Base from '../../layouts/Base.astro'
+---
+<Base title="Fitzroy+ i-Size — Nguyen Xuan Binh">
+  <div class="viewer-wrap">
+
+    <!-- Right-side tab switcher -->
+    <div class="view-tabs">
+      <button class="view-tab active" id="tab-3d" data-view="3d">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        </svg>
+        <span data-en="3D View" data-vi="Xem 3D">3D View</span>
+      </button>
+    </div>
+
+    <!-- 3D view -->
+    <div class="view view-3d active" id="view-3d">
+      <div class="viewer-title">
+        <h1 data-en="Fitzroy+ i-Size" data-vi="Fitzroy+ i-Size">Fitzroy+ i-Size</h1>
+        <p data-en="High-detail 3D product visualization" data-vi="Hình ảnh 3D sản phẩm chi tiết cao">
+          High-detail 3D product visualization
+        </p>
+      </div>
+      <model-viewer
+        src="/models/fitzroy-isize.glb"
+        alt="Fitzroy+ i-Size child car seat 3D model"
+        auto-rotate
+        camera-controls
+        shadow-intensity="1"
+        shadow-softness="1"
+        environment-image="neutral"
+        exposure="1.0"
+        tone-mapping="neutral"
+        camera-orbit="0deg 75deg 150%"
+        min-camera-orbit="auto auto 100%"
+        max-camera-orbit="auto auto 400%"
+        style="width:100%;height:100%;"
+      ></model-viewer>
+    </div>
+
+    <!-- Zoom slider -->
+    <div class="zoom-bar">
+      <input type="range" class="zoom-slider" id="zoomSlider" min="100" max="400" value="150" step="1" />
+      <button class="recenter-btn" id="recenterBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+          <line x1="5" y1="5" x2="10.5" y2="10.5"/>
+          <polyline points="7,10.5 10.5,10.5 10.5,7"/>
+          <line x1="19" y1="5" x2="13.5" y2="10.5"/>
+          <polyline points="17,10.5 13.5,10.5 13.5,7"/>
+          <line x1="5" y1="19" x2="10.5" y2="13.5"/>
+          <polyline points="7,13.5 10.5,13.5 10.5,17"/>
+          <line x1="19" y1="19" x2="13.5" y2="13.5"/>
+          <polyline points="17,13.5 13.5,13.5 13.5,17"/>
+        </svg>
+        <span class="recenter-tooltip">Reset view</span>
+      </button>
+    </div>
+
+  </div>
+</Base>
+
+<script>
+  import '@google/model-viewer'
+
+  const mv     = document.querySelector('model-viewer') as any
+  const slider = document.getElementById('zoomSlider') as HTMLInputElement
+
+  let pctPerMeter: number | null = null
+  const INITIAL_ZOOM = 150
+
+  mv.addEventListener('load', () => {
+    requestAnimationFrame(() => {
+      const radius = mv.getCameraOrbit().radius
+      if (radius) pctPerMeter = INITIAL_ZOOM / radius
+    })
+  })
+
+  mv.addEventListener('camera-change', () => {
+    if (!pctPerMeter) return
+    const pct = mv.getCameraOrbit().radius * pctPerMeter
+    slider.value = String(Math.round(Math.max(100, Math.min(400, pct))))
+  })
+
+  function setZoom(value: number) {
+    const parts = mv.cameraOrbit.split(' ')
+    parts[2] = value + '%'
+    mv.cameraOrbit = parts.join(' ')
+    slider.value = String(value)
+  }
+
+  slider.addEventListener('input', () => setZoom(Number(slider.value)))
+
+  document.getElementById('recenterBtn')?.addEventListener('click', () => {
+    mv.cameraOrbit  = '0deg 75deg 150%'
+    mv.cameraTarget = 'auto auto auto'
+    mv.fieldOfView  = 'auto'
+    slider.value    = '150'
+  })
+</script>
+
+<style>
+  .viewer-wrap {
+    position: relative;
+    width:  calc(100% + 64px);
+    height: calc(100vh - 56px);
+    margin: -24px -32px 0;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .view {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+  }
+
+  .view.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .view-3d {
+    background: radial-gradient(ellipse at center, #6b6b6b 0%, #3a3a3a 100%);
+  }
+
+  :global([data-theme="light"]) .view-3d {
+    background: radial-gradient(ellipse at center, #c8c8c8 0%, #a0a0a0 100%);
+  }
+
+  model-viewer {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+
+  .viewer-title {
+    position: absolute;
+    top: 32px;
+    left: 40px;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .viewer-title h1 {
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .viewer-title p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  }
+
+  .zoom-bar {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 40px;
+    background: rgba(10,10,20,0.65);
+    backdrop-filter: blur(10px);
+  }
+
+  .zoom-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 140px;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.2);
+    outline: none;
+    cursor: pointer;
+  }
+
+  .zoom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+
+  .zoom-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+  .zoom-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .recenter-btn {
+    position: relative;
+    background: none;
+    border: none;
+    border-left: 1px solid rgba(255,255,255,0.15);
+    padding-left: 10px;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.2s;
+    flex-shrink: 0;
+  }
+
+  .recenter-btn:hover { color: #fff; }
+
+  .recenter-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    transition-delay: 0s;
+  }
+
+  .recenter-btn:hover .recenter-tooltip {
+    opacity: 1;
+    transition-delay: 1s;
+  }
+
+  .view-tabs {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .view-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(10,10,20,0.6);
+    backdrop-filter: blur(10px);
+    color: rgba(255,255,255,0.55);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    min-width: 68px;
+  }
+
+  .view-tab:hover {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+  }
+
+  .view-tab.active {
+    background: #fff;
+    color: #0a0a14;
+    border-color: #fff;
+    font-weight: 700;
+  }
+
+  .view-tab svg {
+    flex-shrink: 0;
+  }
+</style>

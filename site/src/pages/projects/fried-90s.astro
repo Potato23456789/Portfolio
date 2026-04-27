@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro'
+---
+<Base title="Fried 90's — Nguyen Xuan Binh">
+  <div class="page-header">
+    <h1 class="page-title">Fried 90's</h1>
+    <p class="page-sub" data-en="High-fidelity 3D scene · Cycles renders up to 2048 spp" data-vi="Cảnh 3D chi tiết cao · Cycles render lên tới 2048 mẫu">
+      High-fidelity 3D scene · Cycles renders up to 2048 spp
+    </p>
+  </div>
+
+  <!-- Hero render placeholder -->
+  <div class="project-hero-img" style="display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:14px;">
+    Hero render — replace with Camera003samp2048time5hour.webp
+  </div>
+
+  <!-- Multi-angle gallery -->
+  <h2 style="font-size:18px;margin-bottom:16px;" data-en="Camera Angles" data-vi="Các góc máy">Camera Angles</h2>
+  <div class="gallery-grid">
+    {['Camera 000', 'Camera 001', 'Camera 002', 'Camera 003', 'Camera 004', 'Camera 005', 'Camera 006'].map(cam => (
+      <div class="gallery-item">
+        <div class="gallery-placeholder">{cam}</div>
+      </div>
+    ))}
+  </div>
+</Base>

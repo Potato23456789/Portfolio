@@ -11,12 +11,15 @@ img/Fitzroy +i Size/
 img/LinkOnlineLearners Mascot/
 img/icon/
 
-# Source CV files (PDF and duplicate HTML)
+# Old root CV files (now served via site/public/cv/)
 CV_3D.html
+CV_3D_VN.html
+index.html
 *.pdf
 
-# Allow Vietnamese CV
-!CV_3D_VN.html
+# Site node_modules and build cache
+site/node_modules/
+site/.astro/
 
 # Source design files
 *.indd

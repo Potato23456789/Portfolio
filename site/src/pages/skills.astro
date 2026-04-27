@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro'
+
+const tools = [
+  { name: 'Blender',             icon: '/icons/blender.png' },
+  { name: 'Substance Painter',   icon: '/icons/substance.png' },
+  { name: 'Krita',               icon: '/icons/krita.png' },
+  { name: 'Adobe Suite',         icon: '/icons/adobe.png' },
+]
+---
+<Base title="Skills — Nguyen Xuan Binh">
+  <div class="page-header">
+    <h1 class="page-title" data-en="Skills & Tools" data-vi="Kỹ năng & Công cụ">Skills & Tools</h1>
+    <p class="page-sub" data-en="Software I work with" data-vi="Phần mềm tôi sử dụng">Software I work with</p>
+  </div>
+
+  <div class="skills-grid">
+    {tools.map(tool => (
+      <div class="skill-card">
+        <div class="skill-icon-placeholder"></div>
+        <span class="skill-name">{tool.name}</span>
+      </div>
+    ))}
+  </div>
+</Base>

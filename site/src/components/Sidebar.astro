@@ -1,0 +1,54 @@
+---
+import { projects } from '../data/projects.js'
+const path = Astro.url.pathname
+---
+<nav class="sidebar">
+  <!-- Section 1: Main nav -->
+  <div class="sidebar-section">
+    <a href="/" class:list={['sidebar-link', { active: path === '/' }]}>
+      <span class="sidebar-icon">🏠</span>
+      <span data-en="Home" data-vi="Trang chủ">Home</span>
+    </a>
+    <a href="/about" class:list={['sidebar-link', { active: path === '/about' }]}>
+      <span class="sidebar-icon">👤</span>
+      <span data-en="About" data-vi="Giới thiệu">About</span>
+    </a>
+  </div>
+
+  <!-- Section 2: Projects (data-driven) -->
+  <div class="sidebar-section">
+    <div class="sidebar-label" data-en="Projects" data-vi="Dự án">Projects</div>
+    {projects.map(p => (
+      <a href={`/projects/${p.slug}`}
+         class:list={['sidebar-link', { active: path === `/projects/${p.slug}` }]}>
+        <span class="sidebar-icon">▶</span>
+        <span data-en={p.en.title} data-vi={p.vi.title}>{p.en.title}</span>
+      </a>
+    ))}
+  </div>
+
+  <!-- Section 3: CV -->
+  <div class="sidebar-section">
+    <div class="sidebar-label" data-en="CV / Resume" data-vi="Hồ sơ">CV / Resume</div>
+    <a href="/cv/en.html" target="_blank" class="sidebar-link">
+      <span class="sidebar-icon">📄</span>
+      <span data-en="CV — English" data-vi="CV — Tiếng Anh">CV — English</span>
+    </a>
+    <a href="/cv/vi.html" target="_blank" class="sidebar-link">
+      <span class="sidebar-icon">📄</span>
+      <span data-en="CV — Vietnamese" data-vi="CV — Tiếng Việt">CV — Vietnamese</span>
+    </a>
+  </div>
+
+  <!-- Section 4: More -->
+  <div class="sidebar-section">
+    <a href="/skills" class:list={['sidebar-link', { active: path === '/skills' }]}>
+      <span class="sidebar-icon">🔧</span>
+      <span data-en="Skills" data-vi="Kỹ năng">Skills</span>
+    </a>
+    <a href="/contact" class:list={['sidebar-link', { active: path === '/contact' }]}>
+      <span class="sidebar-icon">✉️</span>
+      <span data-en="Contact" data-vi="Liên hệ">Contact</span>
+    </a>
+  </div>
+</nav>

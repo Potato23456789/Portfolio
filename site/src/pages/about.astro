@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro'
+---
+<Base title="About — Nguyen Xuan Binh">
+  <div class="page-header">
+    <h1 class="page-title" data-en="About Me" data-vi="Giới thiệu">About Me</h1>
+    <p class="page-sub" data-en="3D Artist, Video Editor & Designer based in Vietnam" data-vi="Nghệ sĩ 3D, Dựng phim & Thiết kế tại Việt Nam">
+      3D Artist, Video Editor & Designer based in Vietnam
+    </p>
+  </div>
+
+  <div style="display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap;">
+    <div class="profile-pic-large"></div>
+    <div style="max-width:560px; line-height:1.8; color:var(--text);">
+      <p data-en="I create 3D visualizations, brand identities, and immersive environments. Specializing in architectural rendering and product visualization using Blender and Substance Painter."
+         data-vi="Tôi tạo ra các hình ảnh 3D, thiết kế thương hiệu và không gian nhập vai. Chuyên về render kiến trúc và hình ảnh sản phẩm sử dụng Blender và Substance Painter.">
+        I create 3D visualizations, brand identities, and immersive environments. Specializing in architectural rendering and product visualization using Blender and Substance Painter.
+      </p>
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="/CV Nguyen Xuan Binh.pdf" download class="btn-pill" style="display:inline-block; padding:10px 20px;">
+          <span data-en="Download CV" data-vi="Tải CV">Download CV</span>
+        </a>
+        <a href="/CV Nguyen Xuan Binh 3D.pdf" download class="btn-pill" style="display:inline-block; padding:10px 20px;">
+          <span data-en="Download 3D CV" data-vi="Tải CV 3D">Download 3D CV</span>
+        </a>
+        <a href="/RenderPortfolio.pdf" download class="btn-pill" style="display:inline-block; padding:10px 20px;">
+          <span data-en="Print Portfolio" data-vi="Portfolio in">Print Portfolio</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+.profile-pic-large {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  flex-shrink: 0;
+}
+</style>
