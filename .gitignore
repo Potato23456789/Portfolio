@@ -14,7 +14,7 @@ img/icon/
 # Old root CV files (now served via site/public/cv/)
 CV_3D.html
 CV_3D_VN.html
-index.html
+/index.html
 *.pdf
 
 # Site node_modules and build cache

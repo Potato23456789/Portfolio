@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en" data-theme="dark" data-lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.svg"><title>Fried 90&#39;s — Nguyen Xuan Binh</title><script>
+    // Apply theme before paint to avoid flash
+    const t = localStorage.getItem('theme') || 'dark'
+    const l = localStorage.getItem('lang') || 'en'
+    document.documentElement.setAttribute('data-theme', t)
+    document.documentElement.setAttribute('data-lang', l)
+  </script><link rel="stylesheet" href="/Portfolio/_astro/Base.DONehB-M.css"></head> <body> <header class="topbar"> <div class="topbar-left"> <button class="hamburger" aria-label="Menu" onclick="toggleSidebar()"> <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"> <rect y="4" width="24" height="2" rx="1"></rect> <rect y="11" width="24" height="2" rx="1"></rect> <rect y="18" width="24" height="2" rx="1"></rect> </svg> </button> <a href="/" class="topbar-logo">Nguyen Xuan Binh</a> </div> <div class="topbar-center"> <input class="search-bar" type="text" placeholder="Search..." readonly tabindex="-1"> </div> <div class="topbar-right"> <!-- Theme toggle --> <button class="btn-pill" id="btn-dark" onclick="setTheme('dark')">Dark</button> <button class="btn-pill" id="btn-light" onclick="setTheme('light')">Light</button> <button class="btn-pill" id="btn-funky" onclick="setTheme('funky')">Funky</button> <!-- Language toggle --> <button class="btn-pill" id="btn-lang" onclick="toggleLang()">VI</button> <!-- Profile picture --> <div class="profile-pic">NB</div> </div> </header> <script>
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+    updateThemeBtns()
+  }
+
+  function toggleSidebar() {
+    const layout  = document.querySelector('.layout')
+    const sidebar = document.querySelector('.sidebar')
+    const collapsed = sidebar.classList.toggle('collapsed')
+    layout.classList.toggle('sidebar-collapsed', collapsed)
+    localStorage.setItem('sidebar', collapsed ? 'collapsed' : 'open')
+  }
+
+  // Restore sidebar state on load
+  if (localStorage.getItem('sidebar') === 'collapsed') {
+    document.querySelector('.sidebar')?.classList.add('collapsed')
+    document.querySelector('.layout')?.classList.add('sidebar-collapsed')
+  }
+
+  function updateThemeBtns() {
+    const current = document.documentElement.getAttribute('data-theme')
+    document.querySelectorAll('.btn-pill[id^="btn-"]').forEach(btn => {
+      if (btn.id === 'btn-lang') return
+      btn.classList.toggle('active-theme', btn.id === 'btn-' + current)
+    })
+  }
+
+  function toggleLang() {
+    const lang = localStorage.getItem('lang') === 'vi' ? 'en' : 'vi'
+    localStorage.setItem('lang', lang)
+    document.documentElement.setAttribute('data-lang', lang)
+    document.getElementById('btn-lang').textContent = lang === 'vi' ? 'EN' : 'VI'
+    applyLang(lang)
+  }
+
+  function applyLang(lang) {
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.textContent = lang === 'vi' ? el.dataset.vi : el.dataset.en
+    })
+  }
+
+  // Apply saved state on load
+  const savedTheme = localStorage.getItem('theme') || 'dark'
+  const savedLang  = localStorage.getItem('lang')  || 'en'
+  setTheme(savedTheme)
+  document.documentElement.setAttribute('data-lang', savedLang)
+  document.getElementById('btn-lang').textContent = savedLang === 'vi' ? 'EN' : 'VI'
+  applyLang(savedLang)
+</script> <div class="layout"> <nav class="sidebar"> <!-- Section 1: Main nav --> <div class="sidebar-section"> <a href="/" class="sidebar-link"> <span class="sidebar-icon">🏠</span> <span data-en="Home" data-vi="Trang chủ">Home</span> </a> <a href="/about" class="sidebar-link"> <span class="sidebar-icon">👤</span> <span data-en="About" data-vi="Giới thiệu">About</span> </a> </div> <!-- Section 2: Projects (data-driven) --> <div class="sidebar-section"> <div class="sidebar-label" data-en="Projects" data-vi="Dự án">Projects</div> <a href="/projects/damai-ramen" class="sidebar-link"> <span class="sidebar-icon">▶</span> <span data-en="DaMai Ramen" data-vi="DaMai Ramen">DaMai Ramen</span> </a><a href="/projects/fitzroy-isize" class="sidebar-link"> <span class="sidebar-icon">▶</span> <span data-en="Fitzroy+ i-Size" data-vi="Fitzroy+ i-Size">Fitzroy+ i-Size</span> </a><a href="/projects/fried-90s" class="sidebar-link"> <span class="sidebar-icon">▶</span> <span data-en="Fried 90's" data-vi="Fried 90's">Fried 90&#39;s</span> </a> </div> <!-- Section 3: CV --> <div class="sidebar-section"> <div class="sidebar-label" data-en="CV / Resume" data-vi="Hồ sơ">CV / Resume</div> <a href="/cv/en.html" target="_blank" class="sidebar-link"> <span class="sidebar-icon">📄</span> <span data-en="CV — English" data-vi="CV — Tiếng Anh">CV — English</span> </a> <a href="/cv/vi.html" target="_blank" class="sidebar-link"> <span class="sidebar-icon">📄</span> <span data-en="CV — Vietnamese" data-vi="CV — Tiếng Việt">CV — Vietnamese</span> </a> </div> <!-- Section 4: More --> <div class="sidebar-section"> <a href="/skills" class="sidebar-link"> <span class="sidebar-icon">🔧</span> <span data-en="Skills" data-vi="Kỹ năng">Skills</span> </a> <a href="/contact" class="sidebar-link"> <span class="sidebar-icon">✉️</span> <span data-en="Contact" data-vi="Liên hệ">Contact</span> </a> </div> </nav> <main class="main-content">  <div class="page-header"> <h1 class="page-title">Fried 90's</h1> <p class="page-sub" data-en="High-fidelity 3D scene · Cycles renders up to 2048 spp" data-vi="Cảnh 3D chi tiết cao · Cycles render lên tới 2048 mẫu">
+High-fidelity 3D scene · Cycles renders up to 2048 spp
+</p> </div>  <div class="project-hero-img" style="display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:14px;">
+Hero render — replace with Camera003samp2048time5hour.webp
+</div>  <h2 style="font-size:18px;margin-bottom:16px;" data-en="Camera Angles" data-vi="Các góc máy">Camera Angles</h2> <div class="gallery-grid"> <div class="gallery-item"> <div class="gallery-placeholder">Camera 000</div> </div><div class="gallery-item"> <div class="gallery-placeholder">Camera 001</div> </div><div class="gallery-item"> <div class="gallery-placeholder">Camera 002</div> </div><div class="gallery-item"> <div class="gallery-placeholder">Camera 003</div> </div><div class="gallery-item"> <div class="gallery-placeholder">Camera 004</div> </div><div class="gallery-item"> <div class="gallery-placeholder">Camera 005</div> </div><div class="gallery-item"> <div class="gallery-placeholder">Camera 006</div> </div> </div>  </main> </div> </body></html>
